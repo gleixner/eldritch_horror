@@ -39,4 +39,5 @@ class Investigator:
 	# outcome: 0 for success, 1 for failure
 	def _skillCheck (this, skill, modifier, outcome):
 		numberOfDice = this.skills[skill.lower()] + modifier
+		print numberOfDice
 		return this.probability[numberOfDice][outcome]
