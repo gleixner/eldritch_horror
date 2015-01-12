@@ -24,14 +24,19 @@ class Investigator:
 
 	# returns the investigator's chance of succeeding at both tests
 	def success (this, expedition):
-		return this._skillCheck(expedition[2], expedition[3], 0) * this._skillCheck(expedition[4], expedition[5], 0)
+		passFirstTest = this._skillCheck(expedition[2], expedition[3], 0)
+		passSecondTest = this._skillCheck(expedition[4], expedition[5], 0)
+		return passFirstTest * passSecondTest
 
 	# returns the investigator's chance of failing at both tests
 	def failure (this, expedition):
-		return this._skillCheck(expedition[2], expedition[3], 1) * this._skillCheck(expedition[6], expedition[7], 1)
+		failFirstTest = this._skillCheck(expedition[2], expedition[3], 1)
+		failThirdTest = this._skillCheck(expedition[6], expedition[7], 1)
+		return failFirstTest * failThirdTest
 
 	# skill: the skill being tested for the expedition
 	# modifier: may add or subtract number of dice allowed
 	# outcome: 0 for success, 1 for failure
 	def _skillCheck (this, skill, modifier, outcome):
-		return this.probability[ (this.skills[ skill.lower() ] + modifier) ][outcome]
+		numberOfDice = this.skills[skill.lower()] + modifier
+		return this.probability[numberOfDice][outcome]
