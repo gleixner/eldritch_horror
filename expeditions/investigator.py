@@ -2,17 +2,17 @@ class Investigator:
 	'A character in Eldritch Horror that has certain skills with varying levels of competence.'
 
 	# chance of success and failure for the number of dice rolled
-	probability = {'1' : [0.33,0.67], '2' : [0.56,0.44], '3' : [0.7,0.3], '4' : [0.8,0.2]}
+	probability = {1 : [0.33,0.67], 2 : [0.56,0.44], 3 : [0.7,0.3], 4 : [0.8,0.2]}
 	# how many dice the investigator can roll for each skill
 	skills = {}
 
 	def __init__ (this, data):
 		this.name = data[0]
-		this.skills['lore'] = data[1]
-		this.skills['influence'] = data[2]
-		this.skills['observation'] = data[3]
-		this.skills['strength'] = data[4]
-		this.skills['will'] = data[5]
+		this.skills['lore'] = int(data[1])
+		this.skills['influence'] = int(data[2])
+		this.skills['observation'] = int(data[3])
+		this.skills['strength'] = int(data[4])
+		this.skills['will'] = int(data[5])
 
 	# 	Test of Skill 1  
 	# 		-- pass --> Test of Skill 2 
@@ -38,6 +38,5 @@ class Investigator:
 	# modifier: may add or subtract number of dice allowed
 	# outcome: 0 for success, 1 for failure
 	def _skillCheck (this, skill, modifier, outcome):
-		numberOfDice = this.skills[skill.lower()] + modifier
-		print numberOfDice
+		numberOfDice = this.skills[skill.lower()] + int(modifier)
 		return this.probability[numberOfDice][outcome]
