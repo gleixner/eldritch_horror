@@ -1,33 +1,19 @@
-Location,Initial,,Pass,,,Fail,,,Reward,,,Trish,
-,Observation,Strength,Lore,Observation,Will,Influence,Observation,Strength,1,2,,Lore,Influence
-Amazon,,,,,,,,,,,,,
-1,,0,0,,,,-1,,Doom -1,,,,
-2,0,,0,,,,,-1,Artifact,2 clues,,,
-3,,0,,-1,,0,,,Artifact,Clue,,,
-Pyramids,,,,,,,,,,,,,
-1,,0,0,,,,-1,,Doom -1,,,,
-2,0,,0,,,,,-1,Artifact,2 clues,,,
-3,,0,,-1,,0,,,Artifact,,,,
-Tunguska,,,,,,,,,,,,,
-1,,0,0,,,,-1,,Doom -1,,,,
-2,0,,,,0,,,-1,Artifact,2 clues,,,
-3,,0,,-1,,0,,,Artifact,Clue,,,
-Africa,,,,,,,,,,,,,
-1,,0,0,,,,-1,,Doom -1,,,,
-2,0,,0,,,,,-1,Artifact,2 clues,,,
-3,,0,,-1,,0,,,Artifact,,,,
-Himalayas,,,,,,,,,,,,,
-1,,Ambush,0,,,,0,,Doom -1,,,,
-2,0,,,,0,,,-1,Artifact,2 clues,,,
-3,,0,-1,,,0,,,Artifact,,,,
-Antartica,,,,,,,,,,,,,
-1,,0,,,0,,-1,,Doom -1,,,,
-2,0,,,,0,,,-1,Artifact,2 clues,,,
-3,,0,,-1,,0,,,Artifact,,,,
-,,,,,,,,,,,,,
-,Probabilities,,,,,,,,,,,,
-Dice#,Success,Fail,,,,,,,,,,,
-1,0.33,0.67,,,,,,,,,,,
-2,0.56,0.44,,,,,,,,,,,
-3,0.7,0.3,,,,,,,,,,,
-4,0.8,0.2,,,,,,,,,,,
+location,number,initial test,modifier,success test,modifier,fail test,modifier
+Amazon,1,Strength,0,Lore,0,Observation,-1
+Amazon,2,Observation,0,Lore,0,Strength,-1
+Amazon,3,Strength,0,Observation,-1,Influence,0
+Pyramids,1,Strength,0,Lore,0,Observation,-1
+Pyramids,2,Observation,0,Lore,0,Strength,-1
+Pyramids,3,Strength,0,Observation,-1,Influence,0
+Tunguska,1,Strength,0,Lore,0,Observation,-1
+Tunguska,2,Observation,0,Lore,0,Strength,-1
+Tunguska,3,Strength,0,Observation,-1,Influence,0
+Africa,1,Strength,0,Lore,0,Observation,-1
+Africa,2,Observation,0,Lore,0,Strength,-1
+Africa,3,Strength,0,Observation,-1,Influence,0
+Himalayas,1,Strength,0,Lore,0,Observation,0
+Himalayas,2,Observation,0,Will,0,Strength,-1
+Himalayas,3,Strength,0,Lore,-1,Influence,0
+Antartica,1,Strength,0,Will,0,Observation,-1
+Antartica,2,Observation,0,Will,0,Strength,-1
+Antartica,3,Strength,0,Observation,-1,Influence,0
