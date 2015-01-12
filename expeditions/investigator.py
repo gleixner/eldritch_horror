@@ -1,22 +1,9 @@
-# need a constructor that takes a line of the data, just sets the data and name
-# need a method that takes in a line of expedition and calculates the probability of success and failure in that expedition.
-# Structure of expeditions:
-
-# 	Test of Skill 1  
-# 		-- pass --> Test of Skill 2 
-# 						  -- pass --> good outcome
-# 						  -- fail --> bad outcome
-# 		-- fail --> Test of Skill 3
-# 						  -- pass --> eh outcome
-# 						  -- fail --> bad outcome
-#
-# Calculate the success for the first * success for the second.  
-# Calculate the failure of the first test * failure of the third test
-#
 class Investigator:
 	'A character in Eldritch Horror that has certain skills with varying levels of competence.'
 
+	# chance of success and failure for the number of dice rolled
 	probability = {'1' : [0.33,0.67], '2' : [0.56,0.44], '3' : [0.7,0.3], '4' : [0.8,0.2]}
+	# how many dice the investigator can roll for each skill
 	skills = {}
 
 	def __init__ (this, data):
@@ -27,14 +14,24 @@ class Investigator:
 		this.skills['strength'] = data[4]
 		this.skills['will'] = data[5]
 
+	# 	Test of Skill 1  
+	# 		-- pass --> Test of Skill 2 
+	# 						  -- pass --> good outcome <-- success returns chance of this
+	# 						  -- fail --> bad outcome
+	# 		-- fail --> Test of Skill 3
+	# 						  -- pass --> eh outcome
+	# 						  -- fail --> bad outcome <-- failure returns chance of this
+
+	# returns the investigator's chance of succeeding at both tests
 	def success (this, expedition):
-		return this._passTest(expedition[2], expedition[3]) * this._passTest(expedition[4], expedition[5])
+		return this._skillCheck(expedition[2], expedition[3], 0) * this._skillCheck(expedition[4], expedition[5], 0)
 
-	def _passTest (this, skill, modifier):
-		return this.probability[(this.probability(this.skills[skill.lower()]) + modifier)][0]
-
+	# returns the investigator's chance of failing at both tests
 	def failure (this, expedition):
-		return this._failTest(expedition[2], expedition[3]) * this._failTest(expedition[6], expedition[7])
+		return this._skillCheck(expedition[2], expedition[3], 1) * this._skillCheck(expedition[6], expedition[7], 1)
 
-	def _failTest(this, skill, modifier):
-		return this.probability[(this.probability(this.skills[skill.lower()]) + modifier)][1]
+	# skill: the skill being tested for the expedition
+	# modifier: may add or subtract number of dice allowed
+	# outcome: 0 for success, 1 for failure
+	def _skillCheck (this, skill, modifier, outcome):
+		return this.probability[ (this.skills[ skill.lower() ] + modifier) ][outcome]
