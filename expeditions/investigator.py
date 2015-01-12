@@ -2,7 +2,7 @@ class Investigator:
 	'A character in Eldritch Horror that has certain skills with varying levels of competence.'
 
 	# chance of success and failure for the number of dice rolled
-	probability = {1 : [0.33,0.67], 2 : [0.56,0.44], 3 : [0.7,0.3], 4 : [0.8,0.2]}
+	probability = {1 : [0.33,0.67], 2 : [0.56,0.44], 3 : [0.7,0.3], 4 : [0.8,0.2], 5 : [0.87, 0.13]}
 	# how many dice the investigator can roll for each skill
 	skills = {}
 
@@ -39,4 +39,6 @@ class Investigator:
 	# outcome: 0 for success, 1 for failure
 	def _skillCheck (this, skill, modifier, outcome):
 		numberOfDice = this.skills[skill.lower()] + int(modifier)
+		if numberOfDice == 0:
+				numberOfDice = 1
 		return this.probability[numberOfDice][outcome]
