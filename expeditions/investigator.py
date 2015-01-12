@@ -21,20 +21,20 @@ class Investigator:
 
 	def __init__ (this, data):
 		this.name = data[0]
-		skills['lore'] = data[1]
-		skills['influence'] = data[2]
-		skills['observation'] = data[3]
-		skills['strength'] = data[4]
-		skills['will'] = data[5]
+		this.skills['lore'] = data[1]
+		this.skills['influence'] = data[2]
+		this.skills['observation'] = data[3]
+		this.skills['strength'] = data[4]
+		this.skills['will'] = data[5]
 
-	def success (expedition):
-		return passTest(expedition[2], expedition[3]) * passTest(expedition[4], expedition[5])
+	def success (this, expedition):
+		return this._passTest(expedition[2], expedition[3]) * this._passTest(expedition[4], expedition[5])
 
-	def _passTest (skill, modifier):
-		return probability[(dice(skills[skill.lower()]) + modifier)][0]
+	def _passTest (this, skill, modifier):
+		return this.probability[(this.probability(this.skills[skill.lower()]) + modifier)][0]
 
-	def failure (expedition):
-		return failTest(expedition[2], expedition[3]) * failTest(expedition[6], expedition[7])
+	def failure (this, expedition):
+		return this._failTest(expedition[2], expedition[3]) * this._failTest(expedition[6], expedition[7])
 
-	def _failTest(skill, modifier):
-		return probability[(dice(skills[skill.lower()]) + modifier)][1]
+	def _failTest(this, skill, modifier):
+		return this.probability[(this.probability(this.skills[skill.lower()]) + modifier)][1]

@@ -1,4 +1,4 @@
-import investigator
+from investigator import Investigator
 
 def get(filename):
 		file = open(filename, 'r')
@@ -16,7 +16,7 @@ stats = []
 
 for i in investigators:
 		result = []
-		i = investigator( i )
+		i = Investigator( i )
 		result.append( i.name )
 		for exp in expeditions:
 				answer = ""
