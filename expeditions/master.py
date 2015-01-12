@@ -17,7 +17,7 @@ stats = []
 for i in investigators:
 		result = []
 		i = investigator( i )
-		result.append( i.getName() )
+		result.append( i.name )
 		for exp in expeditions:
 				answer = ""
 				answer = answer + i.success( exp )
