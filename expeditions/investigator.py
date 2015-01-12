@@ -27,16 +27,16 @@ class Investigator:
 	def success (expedition):
 		return passTest(expedition[2], expedition[3]) * passTest(expedition[4], expedition[5])
 
-	def passTest (skill, modifier):
-		return probability(dice(skill) - modifier)[0]
+	def _passTest (skill, modifier):
+		return probability(dice(skill) + modifier)[0]
 
 	def failure (expedition):
 		return failTest(expedition[2], expedition[3]) * failTest(expedition[6], expedition[7])
 
-	def failTest(skill, modifier):
-		return probability(dice(skill) - modifier)[1]
+	def _failTest(skill, modifier):
+		return probability(dice(skill) + modifier)[1]
 
-	def probability (dice):
+	def _probability (dice):
 		stat = []
 		if(dice == 1)
 			stat[0] = 0.33
@@ -52,7 +52,7 @@ class Investigator:
 			stat[1] = 0.2
 		return stat
 
-	def dice (skillString):
+	def _dice (skillString):
 		skill = skillString.lower()
 		if(skill == "lore")
 			return this.lore
